@@ -27,7 +27,7 @@ http://localhost:7000/
 
 ![Sonarqube](https://s1.imghub.io/9QW8d.png)
 
-## Running jacoco
+## Running Jacoco
 
 ```
 $ mvn clean test
