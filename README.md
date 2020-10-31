@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ricardohsmello/ricas-financas.svg?branch=main)](https://travis-ci.org/ricardohsmello/ricas-financas)
+
 # ricas-financas
 
  # Usage
