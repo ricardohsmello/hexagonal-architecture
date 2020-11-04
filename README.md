@@ -7,6 +7,12 @@
 
 # Ricas Finanças
 
+## Built With
+
+- [`Java 11`](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html/) - Language
+- [`Spring-boot`](https://spring.io/projects/spring-boot) - Framework
+- [`ArchUnit`](https://www.archunit.org) - Unit test your Java architecture 
+
  # Usage
 ## Cloning the repo
 
