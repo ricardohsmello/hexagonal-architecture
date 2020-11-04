@@ -36,6 +36,19 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.tngtech.archunit</groupId>
+      <artifactId>archunit-junit5</artifactId>
+      <version>0.14.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -84,5 +97,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

@@ -1,5 +1,6 @@
 package br.com.ricas;
 
+import br.com.ricas.model.Finance;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

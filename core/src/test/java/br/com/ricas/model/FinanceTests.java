@@ -1,4 +1,4 @@
-package br.com.ricas.domain;
+package br.com.ricas.model;
 
 import br.com.ricas.FinanceType;
 import br.com.ricas.RicasFinancasApplication;

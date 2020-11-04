@@ -1,4 +1,4 @@
-package br.com.ricas.domain;
+package br.com.ricas.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
