@@ -50,7 +50,7 @@
         <artifactId>coveralls-maven-plugin</artifactId>
         <version>4.3.0</version>
         <configuration>
-          <repoToken>rI5FPnZGYelXx62OIxTNiT8htt7m3xL6h</repoToken>
+          <repoToken>${repoToken}</repoToken>
         </configuration>
 
         <dependencies>
