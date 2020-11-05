@@ -1,3 +1,8 @@
+![Issues](https://img.shields.io/github/issues/ricardohsmello/ricas-financas) 
+![Forks](https://img.shields.io/github/forks/ricardohsmello/ricas-financas) 
+![Stars](https://img.shields.io/github/stars/ricardohsmello/ricas-financas) 
+![Release Version](https://img.shields.io/github/release/ricardohsmello/ricas-financas)
+
 [![Build Status](https://travis-ci.org/ricardohsmello/ricas-financas.svg?branch=main)](https://travis-ci.org/ricardohsmello/ricas-financas)
 [![Coverage Status](https://coveralls.io/repos/github/ricardohsmello/ricas-financas/badge.svg?branch=main)](https://coveralls.io/github/ricardohsmello/ricas-financas?branch=main)
 
