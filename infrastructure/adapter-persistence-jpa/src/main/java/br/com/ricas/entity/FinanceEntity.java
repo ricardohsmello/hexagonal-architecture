@@ -1,4 +1,4 @@
-package br.com.ricas;
+package br.com.ricas.entity;
 
 import lombok.Data;
 

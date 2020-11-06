@@ -1,6 +1,6 @@
 package br.com.ricas.adapter;
 
-import br.com.ricas.FinanceEntity;
+import br.com.ricas.entity.FinanceEntity;
 import br.com.ricas.model.Finance;
 import br.com.ricas.ports.FinanceServicePort;
 import br.com.ricas.repository.FinanceRepository;
