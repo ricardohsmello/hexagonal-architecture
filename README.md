@@ -46,3 +46,10 @@ $ cd jacoco-sonarqube-spring-boot/target/site/jacoco
 ```
 
 ![Jacoco](https://s1.imghub.io/9lJvu.png)
+
+## Endpoint
+http://localhost:8080/api/finances/finance
+
+{
+    "description": "RODRIGO"
+}
