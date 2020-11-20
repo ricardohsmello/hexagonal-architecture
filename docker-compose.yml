@@ -5,3 +5,28 @@ services:
     image: sonarqube:8.4.1-community
     ports:
       - "7000:9000"
+  postgres:
+    container_name: ricas-financas_postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - production-network
+   
+  pgadmin:
+    container_name: ricas-financas_pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ricasfinancas@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    ports:
+      - '9090:80'
+    networks:
+      - production-network 
+      
+networks: 
+  production-network:
+        driver: bridge

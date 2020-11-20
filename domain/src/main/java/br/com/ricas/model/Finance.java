@@ -1,6 +1,6 @@
 package br.com.ricas.model;
 
-import br.com.ricas.FinanceType;
+import br.com.ricas.enums.FinanceType;
 import lombok.Getter;
 import lombok.Setter;
 

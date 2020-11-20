@@ -1,4 +1,4 @@
-package br.com.ricas;
+package br.com.ricas.enums;
 
 public enum FinanceType {
     EXPENSE, REVENUE

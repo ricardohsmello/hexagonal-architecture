@@ -15,5 +15,6 @@
 
     <modules>
         <module>adapter-persistence-jpa</module>
-   </modules>
+        <module>adapter-rest-api</module>
+  </modules>
 </project>
