@@ -50,6 +50,15 @@ $ cd jacoco-sonarqube-spring-boot/target/site/jacoco
 ## Endpoint
 http://localhost:8080/api/finances/finance
 
+```
 {
-    "description": "RODRIGO"
+    "description": "Gasolina do carro x",
+    "value": 128.90,
+    "dateTime": "2020-11-27T16:22:42.138Z",
+    "category": {             
+        "type": 0,
+        "name": "Combustível"
+    } 
 }
+
+```
