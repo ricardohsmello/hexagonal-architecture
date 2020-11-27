@@ -1,0 +1,20 @@
+CREATE SEQUENCE category_uuid_seq;
+CREATE SEQUENCE finance_uuid_seq;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE "category"
+(
+    "uuid" uuid DEFAULT uuid_generate_v4() NOT NULL,
+    "type" numeric(1) NOT NULL,
+    "name" text NOT NULL,
+    CONSTRAINT pk_category PRIMARY KEY ("uuid")
+);
+
+CREATE TABLE "finance" (
+	"uuid" uuid DEFAULT uuid_generate_v4() NOT NULL,
+	"value" float,
+	"description" text,
+	"date_time" date,
+	"category_uuid" uuid NOT NULL,
+    FOREIGN KEY ("category_uuid") REFERENCES "category" ("uuid"));
+);

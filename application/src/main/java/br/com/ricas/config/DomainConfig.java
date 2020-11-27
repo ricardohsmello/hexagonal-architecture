@@ -1,7 +1,9 @@
 package br.com.ricas.config;
 
-import br.com.ricas.port.PersistentFinancePort;
-import br.com.ricas.usecase.CreateExpenseUseCase;
+import br.com.ricas.port.CategoryPort;
+import br.com.ricas.port.FinancePort;
+import br.com.ricas.usecase.CategoryUseCase;
+import br.com.ricas.usecase.FinanceUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +11,12 @@ import org.springframework.context.annotation.Configuration;
 public class DomainConfig {
 
     @Bean
-    public CreateExpenseUseCase createExpenseUseCase(PersistentFinancePort persistentFinancePort) {
-        return new CreateExpenseUseCase(persistentFinancePort);
+    public FinanceUseCase financeUseCase(FinancePort financePort, CategoryPort categoryPort) {
+        return new FinanceUseCase(financePort, categoryPort);
     }
+    @Bean
+    public CategoryUseCase categoryUseCase(CategoryPort categoryPort) {
+        return new CategoryUseCase(categoryPort);
+    }
+
 }

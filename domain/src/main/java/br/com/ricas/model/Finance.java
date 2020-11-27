@@ -1,48 +1,56 @@
 package br.com.ricas.model;
 
-import br.com.ricas.enums.FinanceType;
-import lombok.Getter;
-import lombok.Setter;
+import br.com.ricas.exceptions.FinanceException;
+import br.com.ricas.util.CheckUUID;
+import lombok.*;
+import lombok.extern.slf4j.Slf4j;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Setter
+@Builder(toBuilder = true)
+@AllArgsConstructor
+@ToString
+@Slf4j
 public class Finance {
 
+    private UUID UUID;
     private String description;
     private double value;
-    private FinanceType type;
+    private LocalDateTime dateTime;
     private Category category;
 
-    public static class Builder {
+    public void isInvalid() throws FinanceException {
+        log();
 
-        private Finance finance;
-
-        public Builder() {
-            this.finance = new Finance();
+        if (isInvalid(this.getDescription())) {
+            throw new FinanceException("property description can't be null or blank");
         }
 
-        public Builder type(FinanceType financeType) {
-            this.finance.setType(financeType);
-            return this;
+        if (this.getValue() <= 0) {
+            throw new FinanceException("property value must be greater than zero");
         }
 
-        public Builder category(Category category) {
-            this.finance.setCategory(category);
-            return this;
+        if (! isInvalid(this.getCategory().getUUID())) {
+            if (! CheckUUID.isUUID(String.valueOf(this.getCategory().getUUID()))) {
+                throw new FinanceException("property category.uuid is not a valid uuid");
+            }
         }
 
-        public Builder description(String description) {
-            this.finance.setDescription(description);
-            return this;
+        if (isInvalid(this.getCategory().getName())) {
+            throw new FinanceException("property category.uuid can't be null");
         }
+    }
 
-        public Builder value(double value) {
-            this.finance.setValue(value);
-            return this;
-        }
+    private boolean isInvalid(String property) {
+        return property == null || property.isEmpty();
+    }
 
-        public Finance build() {
-            return this.finance;
-        }
+    private void log() {
+        log.info("Initializing finance validations");
+        log.info(this.toString());
+        log.info(this.getCategory().toString());
     }
 }

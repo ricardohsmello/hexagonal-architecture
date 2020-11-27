@@ -1,48 +1,38 @@
 package br.com.ricas.model;
 
 import br.com.ricas.enums.FinanceType;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FinanceTests {
 
-    private Finance.Builder builder;
-
-    @BeforeEach
-    void initialize() {
-        builder = new Finance.Builder();
-    }
-
-//    @Test
-//    void testMainApplication() {
-//        try {
-//            RicasFinancasApplication.main(new String[] {});
-//        } catch (Exception e) {
-//            fail(e);
-//        }
-//    }
-
     @Test
     void shouldCreateFinanceWithExpenseType() {
-        Finance finance = builder
-                .type(FinanceType.EXPENSE)
+        Finance finance = Finance.builder()
+                .category(Category.builder()
+                        .type(FinanceType.EXPENSE.ordinal())
+                        .build())
                 .build();
         assertNotNull(finance);
     }
 
     @Test
     void shouldCreateFinanceWithRevenueType() {
-        Finance finance = builder
-                .type(FinanceType.REVENUE)
+        Finance finance = Finance.builder()
+                .category(Category.builder()
+                        .type(FinanceType.REVENUE.ordinal())
+                        .build())
                 .build();
         assertNotNull(finance);
     }
 
     @Test
     void shouldCreateFinanceWithAValue() {
-        Finance finance = builder
+        Finance finance = Finance.builder()
                 .value(250d)
                 .build();
         assertNotNull(finance);
@@ -50,31 +40,32 @@ class FinanceTests {
 
     @Test
     void shouldCreateFinanceWithACategory() {
-        Finance finance = builder
-                .category(new Category())
+        Finance finance = Finance.builder()
+                .category(new Category(String.valueOf(UUID.randomUUID()), "Gasolina", 0))
                 .build();
         assertNotNull(finance);
     }
 
     @Test
     void shouldCreateFinanceWithADescription() {
-        Finance finance = builder
+        Finance finance = Finance.builder()
                 .description("Test")
                 .build();
         assertNotNull(finance);
     }
 
     @Test
-    void testFinanceDataBuilder() {
-        Finance finance = builder
-                .type(FinanceType.REVENUE)
-                .category(new Category())
+    void testFinanceDataFinanceBuilder() {
+        Finance finance = Finance.builder()
+                .category(Category.builder()
+                        .type(FinanceType.REVENUE.ordinal())
+                        .build())
                 .description("Test")
                 .value(250d)
                 .build();
 
         assertNotNull(finance.getDescription());
-        assertNotNull(finance.getType());
+        assertTrue(finance.getCategory().getType()>=0);
         assertTrue(finance.getValue() > 0);
         assertNotNull(finance.getCategory());
     }
