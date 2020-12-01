@@ -1,7 +1,9 @@
 package br.com.ricas.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,6 +13,8 @@ import java.util.UUID;
 @Data
 @Builder(toBuilder = true)
 @Table(name = "FINANCE")
+@AllArgsConstructor
+@NoArgsConstructor
 public class FinanceEntity {
 
     @Id

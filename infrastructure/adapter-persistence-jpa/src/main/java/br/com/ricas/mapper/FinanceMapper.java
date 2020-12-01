@@ -4,6 +4,9 @@ import br.com.ricas.entity.FinanceEntity;
 import br.com.ricas.model.Finance;
 import lombok.experimental.UtilityClass;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @UtilityClass
 public class FinanceMapper {
 
@@ -25,5 +28,15 @@ public class FinanceMapper {
                 .category(CategoryMapper.toCategory(financeEntity.getCategory()))
                 .value(financeEntity.getValue())
                 .build();
+    }
+
+    public List<Finance> toListFinance(final List<FinanceEntity> list) {
+        List<Finance> listFinance = new ArrayList<>();
+
+        list.forEach(financeEntity -> {
+            listFinance.add(toFinance(financeEntity));
+        });
+
+        return listFinance;
     }
 }
