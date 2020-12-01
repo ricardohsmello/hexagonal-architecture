@@ -48,9 +48,8 @@ $ cd jacoco-sonarqube-spring-boot/target/site/jacoco
 ![Jacoco](https://s1.imghub.io/9lJvu.png)
 
 ## Endpoints
-### findAll Finances
-http://localhost:8080/api/finances/finance
-
+### GET api/finances/finance
+- Response: Code 200
 ```
 {
     "description": "Gasolina do carro x",
@@ -61,22 +60,49 @@ http://localhost:8080/api/finances/finance
         "name": "Combustível"
     } 
 }
-
 ```
-### findAllByType Finances
-http://localhost:8080/api/finances/finance/{EXPENSE}OR{REVENUE}
 
+### GET api/finances/finance/findAllByType/{type}
+- Response: Code 200
+- Param
+   - type: EXPENSE or REVENUE
+- Body:
+```json
+[
+    {
+        "description": "Gasolina",
+        "value": 128.9,
+        "dateTime": "2020-11-27T00:00:00",
+        "category": {
+            "name": "Combustível",
+            "type": 0,
+            "uuid": "ffb822be-22f0-4793-9f4b-bcc3ad040043"
+        },
+        "uuid": "5c38ab57-cea6-4478-b11e-7637639092ed"
+    },
+    {
+        "description": "Pizza dois irmaos",
+        "value": 78.0,
+        "dateTime": "2020-11-29T00:00:00",
+        "category": {
+            "name": "IFood",
+            "type": 0,
+            "uuid": "c9844b1f-046e-43de-9ffd-82136b51c9e0"
+        },
+        "uuid": "980b1fed-5bc3-457e-8b78-21a51d8a7e4a"
+    }
+]
+```
+### POST api/finances/finance
+- Response: Code 201
 ```
 {
-    "description": "Gasolina",
-    "value": 128.9,
-    "dateTime": "2020-11-27T00:00:00",
-    "category": {
-        "name": "Combustível",
-        "type": 0,
-        "uuid": "ffb822be-22f0-4793-9f4b-bcc3ad040043"
-    },
-    "uuid": "5c38ab57-cea6-4478-b11e-7637639092ed"
+    "description": "Primeira parcela décimo terceiro",
+    "value": 1300,
+    "dateTime": "2020-11-29T16:22:42.138Z",
+    "category": {          
+        "type": 1,
+        "name": "13-salário"
+    } 
 }
-
 ```
