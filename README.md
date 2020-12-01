@@ -66,7 +66,6 @@ $ cd jacoco-sonarqube-spring-boot/target/site/jacoco
 - Response: Code 200
 - Param
    - type: EXPENSE or REVENUE
-- Body:
 ```json
 [
     {
@@ -95,6 +94,7 @@ $ cd jacoco-sonarqube-spring-boot/target/site/jacoco
 ```
 ### POST api/finances/finance
 - Response: Code 201
+- Body:
 ```
 {
     "description": "Primeira parcela décimo terceiro",
