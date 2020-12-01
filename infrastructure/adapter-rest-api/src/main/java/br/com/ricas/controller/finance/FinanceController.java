@@ -49,7 +49,7 @@ public class FinanceController {
         return new ResponseEntity<>(financeUseCase.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/finance/{type}", method = RequestMethod.GET)
+    @RequestMapping(value = "/finance/findAllByType/{type}", method = RequestMethod.GET)
     public ResponseEntity<Optional<List<Finance>>> findAllByType(@PathVariable("type") String type) {
         return new ResponseEntity<>(financeUseCase.findAllByType(FinanceType.valueOf(type)), HttpStatus.OK);
     }
