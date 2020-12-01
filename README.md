@@ -47,7 +47,8 @@ $ cd jacoco-sonarqube-spring-boot/target/site/jacoco
 
 ![Jacoco](https://s1.imghub.io/9lJvu.png)
 
-## Endpoint
+## Endpoints
+### findAll Finances
 http://localhost:8080/api/finances/finance
 
 ```
@@ -59,6 +60,23 @@ http://localhost:8080/api/finances/finance
         "type": 0,
         "name": "Combustível"
     } 
+}
+
+```
+### findAllByType Finances
+http://localhost:8080/api/finances/finance/{EXPENSE}OR{REVENUE}
+
+```
+{
+    "description": "Gasolina",
+    "value": 128.9,
+    "dateTime": "2020-11-27T00:00:00",
+    "category": {
+        "name": "Combustível",
+        "type": 0,
+        "uuid": "ffb822be-22f0-4793-9f4b-bcc3ad040043"
+    },
+    "uuid": "5c38ab57-cea6-4478-b11e-7637639092ed"
 }
 
 ```
