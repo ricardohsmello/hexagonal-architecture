@@ -6,7 +6,7 @@ public class CheckUUID {
 
    public static boolean isUUID(String string) {
         try {
-            UUID.fromString(string);
+            UUID uuid = UUID.fromString(string);
             return true;
         } catch (Exception ex) {
             return false;

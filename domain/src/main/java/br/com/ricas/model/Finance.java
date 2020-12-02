@@ -6,7 +6,6 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,7 +15,7 @@ import java.util.UUID;
 @Slf4j
 public class Finance {
 
-    private UUID UUID;
+    private String UUID;
     private String description;
     private double value;
     private LocalDateTime dateTime;
@@ -33,8 +32,8 @@ public class Finance {
             throw new FinanceException("property value must be greater than zero");
         }
 
-        if (! isInvalid(this.getCategory().getUUID())) {
-            if (! CheckUUID.isUUID(String.valueOf(this.getCategory().getUUID()))) {
+        if (!isInvalid(this.getCategory().getUUID())) {
+            if (!CheckUUID.isUUID(this.getCategory().getUUID())) {
                 throw new FinanceException("property category.uuid is not a valid uuid");
             }
         }

@@ -1,7 +1,9 @@
 package br.com.ricas.config;
 
+import br.com.ricas.port.AccountPort;
 import br.com.ricas.port.CategoryPort;
 import br.com.ricas.port.FinancePort;
+import br.com.ricas.usecase.AccountUseCase;
 import br.com.ricas.usecase.CategoryUseCase;
 import br.com.ricas.usecase.FinanceUseCase;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,11 @@ public class DomainConfig {
     @Bean
     public CategoryUseCase categoryUseCase(CategoryPort categoryPort) {
         return new CategoryUseCase(categoryPort);
+    }
+
+    @Bean
+    public AccountUseCase accountUseCase(AccountPort accountPort) {
+        return new AccountUseCase(accountPort);
     }
 
 }

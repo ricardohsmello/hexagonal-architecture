@@ -6,18 +6,11 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @Builder(toBuilder = true)
+@ToString
 public class Category {
 
     private String UUID;
     private String name;
     private int type;
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "categoryId=" + UUID +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                '}';
-    }
 }

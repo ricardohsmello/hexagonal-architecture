@@ -11,7 +11,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CategoryUseCase {
 
-    private CategoryPort categoryPort;
+    private final CategoryPort categoryPort;
 
     public Optional<Category> findByName(String name) {
         log.info("Initializing findByName: " + name);

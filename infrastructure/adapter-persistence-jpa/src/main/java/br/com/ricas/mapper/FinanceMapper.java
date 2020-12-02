@@ -6,23 +6,28 @@ import lombok.experimental.UtilityClass;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @UtilityClass
 public class FinanceMapper {
 
     public FinanceEntity toFinanceEntity(final Finance finance) {
-        return FinanceEntity.builder()
-                .UUID(finance.getUUID())
+        FinanceEntity financeEntity = FinanceEntity.builder()
                 .description(finance.getDescription())
                 .dateTime(finance.getDateTime())
                 .category(CategoryMapper.toCategoryEntity(finance.getCategory()))
                 .value(finance.getValue())
                 .build();
+
+        if (financeEntity.getUUID() !=null)
+            financeEntity.setUUID(UUID.fromString(finance.getUUID()));
+
+        return financeEntity;
     }
 
     public Finance toFinance(final FinanceEntity financeEntity) {
         return Finance.builder()
-                .UUID(financeEntity.getUUID())
+                .UUID(String.valueOf(financeEntity.getUUID()))
                 .description(financeEntity.getDescription())
                 .dateTime(financeEntity.getDateTime())
                 .category(CategoryMapper.toCategory(financeEntity.getCategory()))
@@ -35,6 +40,16 @@ public class FinanceMapper {
 
         list.forEach(financeEntity -> {
             listFinance.add(toFinance(financeEntity));
+        });
+
+        return listFinance;
+    }
+
+    public List<FinanceEntity> toListFinanceEntity(final List<Finance> list) {
+        List<FinanceEntity> listFinance = new ArrayList<>();
+
+        list.forEach(finance -> {
+            listFinance.add(toFinanceEntity(finance));
         });
 
         return listFinance;

@@ -1,6 +1,15 @@
+CREATE SEQUENCE account_uuid_seq;
 CREATE SEQUENCE category_uuid_seq;
 CREATE SEQUENCE finance_uuid_seq;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE "account"
+(
+    "uuid" uuid DEFAULT uuid_generate_v4() NOT NULL,
+    "name" text NOT NULL,
+    "balance" float,
+    CONSTRAINT pk_account PRIMARY KEY ("uuid")
+);
 
 CREATE TABLE "category"
 (

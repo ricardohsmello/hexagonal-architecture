@@ -11,8 +11,11 @@ import java.util.UUID;
 /**
  * @author ricardo.mello
  */
-public interface FinanceRepositoryJpa extends JpaRepository<FinanceEntity, UUID> {
+public interface FinanceRepository extends JpaRepository<FinanceEntity, UUID> {
 
     @Query("SELECT f FROM FinanceEntity f, CategoryEntity c WHERE f.category = c.UUID and c.type = :type")
     List<FinanceEntity> findAllByType(@Param("type") Integer type);
+
+    @Override
+    List<FinanceEntity> findAll();
 }

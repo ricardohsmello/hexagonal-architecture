@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * @author ricardo.mello
@@ -34,7 +35,7 @@ public class FinanceController {
 
             CreateFinanceResponse financeResponse = CreateFinanceResponse
                     .builder()
-                    .uuid(finance.get().getUUID())
+                    .UUID(UUID.fromString(finance.get().getUUID()))
                     .description(finance.get().getDescription())
                     .build();
 

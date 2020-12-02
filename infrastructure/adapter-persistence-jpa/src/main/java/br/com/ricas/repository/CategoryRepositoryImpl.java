@@ -23,7 +23,7 @@ public class CategoryRepositoryImpl implements CategoryPort {
     @Override
     public Category findOrCreate(Category category) {
         if (isUUIDpresentInTheCategory(category)) {
-            Category categoryFind = findCategoryByUUID(category.getUUID());
+            Category categoryFind = findCategoryByUUID(UUID.fromString(category.getUUID()));
 
             if (categoryFind != null) {
                 return categoryFind;
@@ -34,14 +34,14 @@ public class CategoryRepositoryImpl implements CategoryPort {
     }
 
     private boolean isUUIDpresentInTheCategory(Category category) {
-        return category.getUUID() != null && !category.getUUID().isEmpty();
+        return category.getUUID() != null && !String.valueOf(category.getUUID()).isEmpty();
     }
 
     private Category createCategory(Category category) {
         return CategoryMapper.toCategory(jpa.save(CategoryMapper.toCategoryEntity(category)));
     }
 
-    private Category findCategoryByUUID(String uuid) {
-        return jpa.findById(UUID.fromString(uuid)).map(CategoryMapper::toCategory).orElse(null);
+    private Category findCategoryByUUID(UUID uuid) {
+        return jpa.findById(uuid).map(CategoryMapper::toCategory).orElse(null);
     }
 }
