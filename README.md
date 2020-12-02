@@ -92,6 +92,7 @@ $ cd jacoco-sonarqube-spring-boot/target/site/jacoco
     }
 ]
 ```
+
 ### POST api/finances/finance
 - Response: Code 201
 - Body:
@@ -104,5 +105,15 @@ $ cd jacoco-sonarqube-spring-boot/target/site/jacoco
         "type": 1,
         "name": "13-salário"
     } 
+}
+```
+
+### POST api/accounts/account/
+- Response: Code 201
+- Body:
+```
+{
+    "name": "Bradesco",
+    "balance": -230.0
 }
 ```
