@@ -1,4 +1,4 @@
-package br.com.ricas.controller.finance.dto;
+package br.com.ricas.controller.category.dto;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -9,9 +9,9 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-public class CreateFinanceResponse {
+public class CategoryResponse {
 
     private UUID UUID;
-    private String description;
+    private String name;
 
 }

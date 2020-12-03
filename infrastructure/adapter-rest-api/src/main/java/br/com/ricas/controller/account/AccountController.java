@@ -1,5 +1,7 @@
-package br.com.ricas.controller.account.dto;
+package br.com.ricas.controller.account;
 
+import br.com.ricas.controller.account.dto.AccountRequest;
+import br.com.ricas.controller.account.dto.AccountResponse;
 import br.com.ricas.exceptions.AccountException;
 import br.com.ricas.model.Account;
 import br.com.ricas.usecase.AccountUseCase;
@@ -26,14 +28,14 @@ public class AccountController {
     AccountUseCase accountUseCase;
 
     @RequestMapping(value = "/account", method = RequestMethod.POST)
-    public ResponseEntity<CreateAccountResponse> add(@RequestBody CreateAccountRequest createAccountRequest) {
+    public ResponseEntity<AccountResponse> add(@RequestBody AccountRequest createAccountRequest) {
         try {
             Optional<Account> account = accountUseCase.save(createAccountRequest.transformToObject());
 
             if (account.isEmpty())
                 throw new AccountException("Account was not created");
 
-            CreateAccountResponse accountResponse = CreateAccountResponse
+            AccountResponse accountResponse = AccountResponse
                     .builder()
                     .UUID(UUID.fromString(account.get().getUUID()))
                     .name(account.get().getName())

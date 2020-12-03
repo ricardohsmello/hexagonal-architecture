@@ -4,9 +4,9 @@ import java.util.UUID;
 
 public class CheckUUID {
 
-   public static boolean isUUID(String string) {
+   public static boolean isValidUUID(String string) {
         try {
-            UUID uuid = UUID.fromString(string);
+            UUID.fromString(string);
             return true;
         } catch (Exception ex) {
             return false;

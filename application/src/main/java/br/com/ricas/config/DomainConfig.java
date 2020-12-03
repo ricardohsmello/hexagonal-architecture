@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 public class DomainConfig {
 
     @Bean
-    public FinanceUseCase financeUseCase(FinancePort financePort, CategoryPort categoryPort) {
-        return new FinanceUseCase(financePort, categoryPort);
+    public FinanceUseCase financeUseCase(FinancePort financePort, CategoryPort categoryPort, AccountPort accountPort) {
+        return new FinanceUseCase(financePort, categoryPort, accountPort);
     }
     @Bean
     public CategoryUseCase categoryUseCase(CategoryPort categoryPort) {

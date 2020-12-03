@@ -1,4 +1,4 @@
-package br.com.ricas.repository;
+package br.com.ricas.repository.account;
 
 import br.com.ricas.entity.AccountEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

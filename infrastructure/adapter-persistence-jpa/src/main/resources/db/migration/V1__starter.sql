@@ -25,5 +25,7 @@ CREATE TABLE "finance" (
 	"description" text,
 	"date_time" date,
 	"category_uuid" uuid NOT NULL,
-    FOREIGN KEY ("category_uuid") REFERENCES "category" ("uuid"));
+	"account_uuid" uuid NOT NULL,
+    FOREIGN KEY ("category_uuid") REFERENCES "category" ("uuid"),
+    FOREIGN KEY ("account_uuid") REFERENCES "account" ("uuid"));
 );

@@ -1,4 +1,4 @@
-package br.com.ricas.repository;
+package br.com.ricas.repository.category;
 
 import br.com.ricas.entity.CategoryEntity;
 import br.com.ricas.entity.FinanceEntity;
@@ -12,6 +12,6 @@ import java.util.UUID;
  * @author ricardo.mello
  *
  */
-public interface CategoryRepositoryJpa extends JpaRepository<CategoryEntity, UUID> {
+public interface CategoryRepository extends JpaRepository<CategoryEntity, UUID> {
     Optional<Category> findByName(String name);
 }

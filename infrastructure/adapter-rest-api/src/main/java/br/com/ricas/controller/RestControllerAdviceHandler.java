@@ -1,6 +1,6 @@
-package br.com.ricas.controlleradvice;
+package br.com.ricas.controller;
 
-import br.com.ricas.exceptions.FinanceException;
+import br.com.ricas.exceptions.FieldException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
@@ -15,10 +15,10 @@ import java.util.List;
  * @author ricardo.mello
  */
 @RestControllerAdvice
-public class FinanceExceptionHandler {
+public class RestControllerAdviceHandler {
 
-    @ExceptionHandler(FinanceException.class)
-    public ResponseEntity<ApiResponseError> financeException(FinanceException ex) {
+    @ExceptionHandler(FieldException.class)
+    public ResponseEntity<ApiResponseError> fieldException(FieldException ex) {
         return getResponseEntity(ex, HttpStatus.BAD_REQUEST);
     }
 

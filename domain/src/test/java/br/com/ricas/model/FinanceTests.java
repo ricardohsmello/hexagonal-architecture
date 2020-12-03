@@ -41,7 +41,7 @@ class FinanceTests {
     @Test
     void shouldCreateFinanceWithACategory() {
         Finance finance = Finance.builder()
-                .category(new Category(String.valueOf(UUID.randomUUID()), "Gasolina", 0))
+                .category(new Category("f93f0226-dcfa-4a6d-bc80-94aca858a9fc", "Gasolina", 0))
                 .build();
         assertNotNull(finance);
     }

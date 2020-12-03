@@ -28,4 +28,7 @@ public class FinanceEntity {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "category_uuid")
     private CategoryEntity category;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "account_uuid")
+    private AccountEntity account;
 }

@@ -1,4 +1,4 @@
-package br.com.ricas.repository;
+package br.com.ricas.repository.finance;
 
 import br.com.ricas.entity.FinanceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

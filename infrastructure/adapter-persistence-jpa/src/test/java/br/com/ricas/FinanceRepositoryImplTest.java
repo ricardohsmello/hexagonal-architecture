@@ -5,8 +5,8 @@ import br.com.ricas.enums.FinanceType;
 import br.com.ricas.mapper.FinanceMapper;
 import br.com.ricas.model.Category;
 import br.com.ricas.model.Finance;
-import br.com.ricas.repository.FinanceRepository;
-import br.com.ricas.repository.FinanceRepositoryImpl;
+import br.com.ricas.repository.finance.FinanceRepository;
+import br.com.ricas.repository.finance.FinanceRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -55,13 +55,15 @@ class FinanceRepositoryImplTest {
     }
 
     private Finance createFinance(String description) {
+        Category category = Category
+                .builder()
+                .name(description)
+                .type(FinanceType.EXPENSE.ordinal())
+                .build();
+        category.setUUID("f93f0226-dcfa-4a6d-bc80-94aca858a9fc");
+
         var finance = Finance.builder()
-                .category(Category
-                        .builder()
-                        .name(description)
-                        .UUID("44551690-954e-4b47-b555-ad6b3df31099")
-                        .type(FinanceType.EXPENSE.ordinal())
-                        .build())
+                .category(category)
                 .value(99.9)
                 .description("Fatura da internet")
                 .UUID(UUID.randomUUID().toString())

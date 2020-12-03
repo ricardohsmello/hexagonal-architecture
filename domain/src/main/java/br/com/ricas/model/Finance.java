@@ -1,7 +1,6 @@
 package br.com.ricas.model;
 
-import br.com.ricas.exceptions.FinanceException;
-import br.com.ricas.util.CheckUUID;
+import br.com.ricas.exceptions.FieldException;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,30 +19,36 @@ public class Finance {
     private double value;
     private LocalDateTime dateTime;
     private Category category;
+    private Account account;
 
-    public void isInvalid() throws FinanceException {
+    public void validate() throws FieldException {
         log();
 
-        if (isInvalid(this.getDescription())) {
-            throw new FinanceException("property description can't be null or blank");
+        if (validate(this.getDescription())) {
+            throw new FieldException("property description can't be null or blank");
         }
 
         if (this.getValue() <= 0) {
-            throw new FinanceException("property value must be greater than zero");
+            throw new FieldException("property value must be greater than zero");
         }
 
-        if (!isInvalid(this.getCategory().getUUID())) {
-            if (!CheckUUID.isUUID(this.getCategory().getUUID())) {
-                throw new FinanceException("property category.uuid is not a valid uuid");
-            }
+//        if (!validate(this.getCategory().getUUID())) {
+//            if (!CheckUUID.isValidUUID(this.getCategory().getUUID())) {
+//                throw new FinanceException("property category.uuid is not a valid uuid");
+//            }
+//        }
+
+        if (validate(this.getCategory().getName())) {
+            throw new FieldException("property category.uuid can't be null");
         }
 
-        if (isInvalid(this.getCategory().getName())) {
-            throw new FinanceException("property category.uuid can't be null");
+
+        if (validate(this.getAccount().getUUID())) {
+            throw new FieldException("property category.uuid can't be null");
         }
     }
 
-    private boolean isInvalid(String property) {
+    private boolean validate(String property) {
         return property == null || property.isEmpty();
     }
 

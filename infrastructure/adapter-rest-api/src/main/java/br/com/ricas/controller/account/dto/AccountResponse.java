@@ -9,7 +9,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-public class CreateAccountResponse {
+public class AccountResponse {
 
     private UUID UUID;
     private String name;

@@ -1,4 +1,4 @@
-package br.com.ricas.repository;
+package br.com.ricas.repository.finance;
 
 import br.com.ricas.entity.FinanceEntity;
 import br.com.ricas.enums.FinanceType;
@@ -7,7 +7,6 @@ import br.com.ricas.model.Finance;
 import br.com.ricas.port.FinancePort;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 

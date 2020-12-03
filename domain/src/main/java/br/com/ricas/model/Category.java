@@ -5,12 +5,11 @@ import lombok.*;
 @Setter
 @Getter
 @AllArgsConstructor
-@Builder(toBuilder = true)
+@Builder
 @ToString
 public class Category {
 
     private String UUID;
     private String name;
     private int type;
-
 }

@@ -1,7 +1,7 @@
 version: '3'
 services:  
   sonar:
-    container_name: sonarqube_ricas_financas
+    container_name: ricas-financas_sonarqube
     image: sonarqube:8.4.1-community
     ports:
       - "7000:9000"

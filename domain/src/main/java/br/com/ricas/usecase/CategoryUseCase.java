@@ -1,21 +1,27 @@
 package br.com.ricas.usecase;
 
+import br.com.ricas.exceptions.FieldException;
 import br.com.ricas.model.Category;
 import br.com.ricas.port.CategoryPort;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
 import java.util.Optional;
 
-@Slf4j
 @AllArgsConstructor
 public class CategoryUseCase {
 
     private final CategoryPort categoryPort;
 
     public Optional<Category> findByName(String name) {
-        log.info("Initializing findByName: " + name);
-
         return categoryPort.findByName(name);
+    }
+
+    public List<Category> findAll() {
+        return categoryPort.findAll();
+    }
+
+    public Optional<Category> save(Category category) throws FieldException {
+        return categoryPort.save(category);
     }
 }

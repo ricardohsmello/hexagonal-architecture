@@ -16,6 +16,7 @@ public class FinanceMapper {
                 .description(finance.getDescription())
                 .dateTime(finance.getDateTime())
                 .category(CategoryMapper.toCategoryEntity(finance.getCategory()))
+                .account(AccountMapper.toAccountEntity(finance.getAccount()))
                 .value(finance.getValue())
                 .build();
 
@@ -31,6 +32,7 @@ public class FinanceMapper {
                 .description(financeEntity.getDescription())
                 .dateTime(financeEntity.getDateTime())
                 .category(CategoryMapper.toCategory(financeEntity.getCategory()))
+                .account(AccountMapper.toAccount(financeEntity.getAccount()))
                 .value(financeEntity.getValue())
                 .build();
     }

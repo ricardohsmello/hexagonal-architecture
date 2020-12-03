@@ -1,7 +1,7 @@
 package br.com.ricas.controller.finance;
 
-import br.com.ricas.controller.finance.dto.CreateFinanceRequest;
-import br.com.ricas.controller.finance.dto.CreateFinanceResponse;
+import br.com.ricas.controller.finance.dto.FinanceRequest;
+import br.com.ricas.controller.finance.dto.FinanceResponse;
 import br.com.ricas.enums.FinanceType;
 import br.com.ricas.exceptions.FinanceException;
 import br.com.ricas.model.Finance;
@@ -26,14 +26,14 @@ public class FinanceController {
     FinanceUseCase financeUseCase;
 
     @RequestMapping(value = "/finance", method = RequestMethod.POST)
-    public ResponseEntity<CreateFinanceResponse> add(@RequestBody CreateFinanceRequest createFinanceRequest) {
+    public ResponseEntity<FinanceResponse> add(@RequestBody FinanceRequest createFinanceRequest) {
         try {
             Optional<Finance> finance = financeUseCase.save(createFinanceRequest.transformToObject());
 
             if (finance.isEmpty())
                 throw new FinanceException("Finance was not created");
 
-            CreateFinanceResponse financeResponse = CreateFinanceResponse
+            FinanceResponse financeResponse = FinanceResponse
                     .builder()
                     .UUID(UUID.fromString(finance.get().getUUID()))
                     .description(finance.get().getDescription())

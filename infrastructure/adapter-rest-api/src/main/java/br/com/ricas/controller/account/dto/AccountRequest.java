@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CreateAccountRequest {
+public class AccountRequest {
 
     String uuid;
     String name;
