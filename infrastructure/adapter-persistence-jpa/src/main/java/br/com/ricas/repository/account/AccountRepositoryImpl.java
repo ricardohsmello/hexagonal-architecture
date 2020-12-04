@@ -26,20 +26,15 @@ import java.util.UUID;
     }
 
     @Override
-    public Optional<Account> findById(UUID uuid) {
-        log.info("Initializing account findById");
-        return Optional.empty();
-    }
-
-    @Override
-    public List<Account> findAll() {
+    public Optional<List<Account>> findAll() {
         log.info("Initializing account findAll");
-        return AccountMapper.toListAccount(accountRepository.findAll(Sort.by("name")));
+        return Optional.of(AccountMapper.toListAccount(accountRepository.findAll(Sort.by("name"))));
     }
 
     @Override
     public Account findOrCreate(Account account) {
         log.info("Initializing account findOrCreate");
+        account.validateProperties(account);
 
         if (isUUIDpresent(account)) {
             Account accountFind = accountRepository.findById(UUID.fromString(account.getUUID())).map(AccountMapper::toAccount).orElse(null);

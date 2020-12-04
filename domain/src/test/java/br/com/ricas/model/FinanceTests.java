@@ -3,8 +3,6 @@ package br.com.ricas.model;
 import br.com.ricas.enums.FinanceType;
 import org.junit.jupiter.api.Test;
 
-import java.util.UUID;
-
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,27 +10,24 @@ class FinanceTests {
 
     @Test
     void shouldCreateFinanceWithExpenseType() {
-        Finance finance = Finance.builder()
-                .category(Category.builder()
-                        .type(FinanceType.EXPENSE.ordinal())
-                        .build())
+
+        Finance finance = new Finance.Builder()
+                .category(new Category.Builder().type(FinanceType.EXPENSE.ordinal()).build())
                 .build();
         assertNotNull(finance);
     }
 
     @Test
     void shouldCreateFinanceWithRevenueType() {
-        Finance finance = Finance.builder()
-                .category(Category.builder()
-                        .type(FinanceType.REVENUE.ordinal())
-                        .build())
+        Finance finance = new Finance.Builder()
+                .category(new Category.Builder().type(FinanceType.REVENUE.ordinal()).build())
                 .build();
         assertNotNull(finance);
     }
 
     @Test
     void shouldCreateFinanceWithAValue() {
-        Finance finance = Finance.builder()
+        Finance finance = new Finance.Builder()
                 .value(250d)
                 .build();
         assertNotNull(finance);
@@ -40,15 +35,15 @@ class FinanceTests {
 
     @Test
     void shouldCreateFinanceWithACategory() {
-        Finance finance = Finance.builder()
-                .category(new Category("f93f0226-dcfa-4a6d-bc80-94aca858a9fc", "Gasolina", 0))
+        Finance finance = new Finance.Builder()
+                .category(new Category("f93f0226-dcfa-4a6d-bc80-94aca858a9fc", "GAS", 0))
                 .build();
         assertNotNull(finance);
     }
 
     @Test
     void shouldCreateFinanceWithADescription() {
-        Finance finance = Finance.builder()
+        Finance finance = new Finance.Builder()
                 .description("Test")
                 .build();
         assertNotNull(finance);
@@ -56,8 +51,8 @@ class FinanceTests {
 
     @Test
     void testFinanceDataFinanceBuilder() {
-        Finance finance = Finance.builder()
-                .category(Category.builder()
+        Finance finance = new Finance.Builder()
+                .category(new Category.Builder()
                         .type(FinanceType.REVENUE.ordinal())
                         .build())
                 .description("Test")

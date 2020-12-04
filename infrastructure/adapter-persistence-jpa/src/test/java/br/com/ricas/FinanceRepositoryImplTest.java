@@ -55,14 +55,14 @@ class FinanceRepositoryImplTest {
     }
 
     private Finance createFinance(String description) {
-        Category category = Category
-                .builder()
+        Category category = new Category
+                .Builder()
                 .name(description)
                 .type(FinanceType.EXPENSE.ordinal())
                 .build();
         category.setUUID("f93f0226-dcfa-4a6d-bc80-94aca858a9fc");
 
-        var finance = Finance.builder()
+        var finance = new Finance.Builder()
                 .category(category)
                 .value(99.9)
                 .description("Fatura da internet")

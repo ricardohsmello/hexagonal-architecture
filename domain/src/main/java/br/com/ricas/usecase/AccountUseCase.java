@@ -14,7 +14,7 @@ public class AccountUseCase {
 
     private final AccountPort accountPort;
 
-    public List<Account> findAll() {
+    public Optional<List<Account>> findAll() {
         return accountPort.findAll();
     }
 

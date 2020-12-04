@@ -48,7 +48,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public ResponseEntity<List<Account>> findAll() {
+    public ResponseEntity<Optional<List<Account>>> findAll() {
         return new ResponseEntity<>(accountUseCase.findAll(), HttpStatus.OK);
     }
 }

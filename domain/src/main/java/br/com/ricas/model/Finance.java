@@ -1,60 +1,84 @@
 package br.com.ricas.model;
 
 import br.com.ricas.exceptions.FieldException;
-import lombok.*;
-import lombok.extern.slf4j.Slf4j;
+import br.com.ricas.util.BaseModel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Builder(toBuilder = true)
 @AllArgsConstructor
-@ToString
-@Slf4j
-public class Finance {
+@NoArgsConstructor
+public class Finance extends BaseModel<Finance> {
 
     private String UUID;
     private String description;
-    private double value;
+    private Double value;
     private LocalDateTime dateTime;
     private Category category;
     private Account account;
 
-    public void validate() throws FieldException {
-        log();
 
-        if (validate(this.getDescription())) {
-            throw new FieldException("property description can't be null or blank");
+    public static class Builder {
+
+        Finance finance;
+
+        public Builder() {
+            finance = new Finance();
         }
 
-        if (this.getValue() <= 0) {
-            throw new FieldException("property value must be greater than zero");
+        public Finance.Builder UUID(String UUID) {
+            this.finance.setUUID(UUID);
+            return this;
         }
 
-//        if (!validate(this.getCategory().getUUID())) {
-//            if (!CheckUUID.isValidUUID(this.getCategory().getUUID())) {
-//                throw new FinanceException("property category.uuid is not a valid uuid");
-//            }
-//        }
-
-        if (validate(this.getCategory().getName())) {
-            throw new FieldException("property category.uuid can't be null");
+        public Finance.Builder description(String description) {
+            this.finance.setDescription(description);
+            return this;
         }
 
+        public Finance.Builder value(Double value) {
+            if (value == null)
+                return this;
 
-        if (validate(this.getAccount().getUUID())) {
-            throw new FieldException("property category.uuid can't be null");
+            if (value < 0) {
+                throw new FieldException("value must be greater than zero");
+            }
+
+            this.finance.setValue(value);
+            return this;
+        }
+
+        public Finance.Builder dateTime(LocalDateTime dateTime) {
+            this.finance.setDateTime(dateTime);
+            return this;
+        }
+
+        public Finance.Builder category(Category category) {
+            this.finance.setCategory(category);
+            return this;
+        }
+
+        public Finance.Builder account(Account account) {
+            this.finance.setAccount(account);
+            return this;
+        }
+
+        public Finance build() {
+            Finance finance = new Finance(this.finance.getUUID(),
+                    this.finance.getDescription(),
+                    this.finance.getValue(),
+                    this.finance.getDateTime(),
+                    this.finance.getCategory(),
+                    this.finance.getAccount());
+
+            finance.validateProperties(finance);
+            return finance;
         }
     }
 
-    private boolean validate(String property) {
-        return property == null || property.isEmpty();
-    }
-
-    private void log() {
-        log.info("Initializing finance validations");
-        log.info(this.toString());
-        log.info(this.getCategory().toString());
-    }
 }

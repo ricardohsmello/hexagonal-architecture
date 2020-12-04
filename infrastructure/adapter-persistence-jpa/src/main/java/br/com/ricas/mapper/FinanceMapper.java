@@ -27,7 +27,7 @@ public class FinanceMapper {
     }
 
     public Finance toFinance(final FinanceEntity financeEntity) {
-        return Finance.builder()
+        return new Finance.Builder()
                 .UUID(String.valueOf(financeEntity.getUUID()))
                 .description(financeEntity.getDescription())
                 .dateTime(financeEntity.getDateTime())

@@ -17,7 +17,7 @@ public class CategoryUseCase {
         return categoryPort.findByName(name);
     }
 
-    public List<Category> findAll() {
+    public Optional<List<Category>> findAll() {
         return categoryPort.findAll();
     }
 

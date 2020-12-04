@@ -9,12 +9,6 @@ import static org.mockito.Mockito.mock;
 
 public class AccountRepositoryImplTest {
 
-    private Account.AccountBuilder account;
-
-    @BeforeEach
-    public void init() {
-        account = Account.builder();
-    }
 
 //    @Test
 //    public void should_save_balance_in_database() {

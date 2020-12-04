@@ -19,12 +19,12 @@ public class FinanceUseCase {
     AccountPort accountPort;
 
     public Optional<Finance> save(Finance finance) throws FieldException {
-        finance.validate();
         prepareFinanceDependency(finance);
         return financePort.save(finance);
     }
 
     private void prepareFinanceDependency(Finance finance) {
+
         finance.setCategory(categoryPort.findOrCreate(finance.getCategory()));
         finance.setAccount(accountPort.findOrCreate(finance.getAccount()));
     }

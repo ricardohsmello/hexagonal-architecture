@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface FinancePort {
     Optional<Finance> save(Finance finance);
-    Optional<List<Finance>> findAll();
     Optional<List<Finance>> findAllByType(FinanceType type);
+    Optional<List<Finance>> findAll();
 }

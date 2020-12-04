@@ -2,19 +2,17 @@ package br.com.ricas.controller.category.dto;
 
 import br.com.ricas.model.Category;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 public class CategoryRequest {
     private String UUID;
     private String name;
-    private int type;
+    private Integer type;
 
     public Category transformToObject() {
-        return Category.builder()
+        return new Category.Builder()
                 .name(name)
                 .type(type)
                 .build();

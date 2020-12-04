@@ -1,5 +1,6 @@
 package br.com.ricas.repository.category;
 
+import br.com.ricas.entity.CategoryEntity;
 import br.com.ricas.mapper.CategoryMapper;
 import br.com.ricas.model.Category;
 import br.com.ricas.port.CategoryPort;
@@ -35,7 +36,7 @@ public class CategoryRepositoryImpl implements CategoryPort {
     public Category findOrCreate(Category category) {
         log.info("Initializing category findOrCreate");
 
-        if (isUUIDpresentInTheCategory(category)) {
+        if (isUUIDpresent(category)) {
             Category categoryFind = findCategoryByUUID(UUID.fromString(category.getUUID()));
 
             if (categoryFind != null) {
@@ -47,12 +48,12 @@ public class CategoryRepositoryImpl implements CategoryPort {
     }
 
     @Override
-    public List<Category> findAll() {
+    public Optional<List<Category>> findAll() {
         log.info("Initializing category findAll");
-        return CategoryMapper.toListCategory(categoryRepository.findAll(Sort.by("name")));
+        return Optional.of(CategoryMapper.toListCategory(categoryRepository.findAll(Sort.by("name"))));
     }
 
-    private boolean isUUIDpresentInTheCategory(Category category) {
+    private boolean isUUIDpresent(Category category) {
         return category.getUUID() != null && !String.valueOf(category.getUUID()).isEmpty();
     }
 

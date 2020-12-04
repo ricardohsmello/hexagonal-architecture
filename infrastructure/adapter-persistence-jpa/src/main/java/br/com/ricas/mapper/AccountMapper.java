@@ -26,7 +26,7 @@ public class AccountMapper {
     }
 
     public Account toAccount(AccountEntity accountEntity) {
-        return Account.builder()
+        return new Account.Builder()
                 .UUID(String.valueOf(accountEntity.getUUID()))
                 .name(accountEntity.getName())
                 .balance(accountEntity.getBalance())

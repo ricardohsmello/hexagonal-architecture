@@ -14,6 +14,8 @@ import java.util.UUID;
 public class CategoryMapper {
 
     public CategoryEntity toCategoryEntity(Category category) {
+        category.validateProperties(category);
+
         CategoryEntity build = CategoryEntity.builder()
                 .name(category.getName())
                 .type(category.getType())
@@ -27,7 +29,7 @@ public class CategoryMapper {
     }
 
     public Category toCategory(CategoryEntity categoryEntity) {
-        Category build = Category.builder()
+        Category build = new Category.Builder()
                 .name(categoryEntity.getName())
                 .type(categoryEntity.getType())
                 .build();

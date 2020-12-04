@@ -1,25 +1,19 @@
 package br.com.ricas.controller.account.dto;
 
 import br.com.ricas.model.Account;
-import br.com.ricas.model.Category;
-import br.com.ricas.model.Finance;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import java.time.LocalDateTime;
-
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 public class AccountRequest {
 
     String uuid;
     String name;
-    double balance;
+    Double balance;
 
     public Account transformToObject() {
-        return Account.builder()
+        return new Account.Builder()
                 .name(name)
                 .balance(balance)
                 .build();
