@@ -98,13 +98,17 @@ $ cd jacoco-sonarqube-spring-boot/target/site/jacoco
 - Body:
 ```
 {
-    "description": "Primeira parcela décimo terceiro",
-    "value": 1300,
-    "dateTime": "2020-11-29T16:22:42.138Z",
-    "category": {          
-        "type": 1,
-        "name": "13-salário"
-    } 
+    "description": "Gasolina do Carro",
+    "value": 11,
+    "dateTime": "2020-11-18T09:41:42.138Z",
+    "category": {
+       "type": 0,     
+       "name": "Combustível"
+    },
+    "account": {
+        "balance": 590,
+        "name": "Santander"
+    }
 }
 ```
 
