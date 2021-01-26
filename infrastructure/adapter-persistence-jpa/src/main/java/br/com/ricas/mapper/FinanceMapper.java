@@ -12,7 +12,10 @@ import java.util.UUID;
 public class FinanceMapper {
 
     public FinanceEntity toFinanceEntity(final Finance finance) {
-        FinanceEntity financeEntity = FinanceEntity.builder()
+        finance.validateProperties(finance);
+
+        FinanceEntity build = FinanceEntity.builder()
+                .UUID(UUID.randomUUID())
                 .description(finance.getDescription())
                 .dateTime(finance.getDateTime())
                 .category(CategoryMapper.toCategoryEntity(finance.getCategory()))
@@ -20,40 +23,31 @@ public class FinanceMapper {
                 .value(finance.getValue())
                 .build();
 
-        if (financeEntity.getUUID() !=null)
-            financeEntity.setUUID(UUID.fromString(finance.getUUID()));
-
-        return financeEntity;
+        return build;
     }
 
     public Finance toFinance(final FinanceEntity financeEntity) {
-        return new Finance.Builder()
-                .UUID(String.valueOf(financeEntity.getUUID()))
+        Finance build = new Finance.Builder()
                 .description(financeEntity.getDescription())
                 .dateTime(financeEntity.getDateTime())
                 .category(CategoryMapper.toCategory(financeEntity.getCategory()))
                 .account(AccountMapper.toAccount(financeEntity.getAccount()))
                 .value(financeEntity.getValue())
                 .build();
+
+        build.setUUID(String.valueOf(financeEntity.getUUID()));
+        return build;
     }
 
     public List<Finance> toListFinance(final List<FinanceEntity> list) {
         List<Finance> listFinance = new ArrayList<>();
-
-        list.forEach(financeEntity -> {
-            listFinance.add(toFinance(financeEntity));
-        });
-
+        list.forEach(financeEntity -> listFinance.add(toFinance(financeEntity)));
         return listFinance;
     }
 
     public List<FinanceEntity> toListFinanceEntity(final List<Finance> list) {
         List<FinanceEntity> listFinance = new ArrayList<>();
-
-        list.forEach(finance -> {
-            listFinance.add(toFinanceEntity(finance));
-        });
-
+        list.forEach(finance -> listFinance.add(toFinanceEntity(finance)));
         return listFinance;
     }
 }

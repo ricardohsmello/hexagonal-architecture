@@ -1,5 +1,7 @@
 package br.com.ricas.entity;
 
+import br.com.ricas.exceptions.FieldException;
+import br.com.ricas.util.BaseModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -23,7 +23,8 @@ public class FinanceRepositoryImpl implements FinancePort {
     @Override
     public Optional<Finance> save(Finance finance) {
         log.info("Initializing finance save");
-        return Optional.of(FinanceMapper.toFinance(financeRepository.save(FinanceMapper.toFinanceEntity(finance))));
+        FinanceEntity financeEntity = FinanceMapper.toFinanceEntity(finance);
+        return Optional.of(FinanceMapper.toFinance(financeRepository.save(financeEntity)));
     }
 
     @Override

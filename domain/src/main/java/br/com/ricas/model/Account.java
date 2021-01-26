@@ -10,49 +10,36 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Account extends BaseModel<Account> {
 
-    private String UUID;
     private String name;
     private Double balance;
 
     public static class Builder {
 
-//        Account account;
-
-        String UUID;
-        String name;
-        Double balance;
+        Account account;
 
         public Builder() {
-//            account = new Account();
+            account = new Account();
         }
 
-        public Account.Builder UUID(String UUID){
-//            this.account.setUUID(UUID);
-            this.UUID=UUID;
+        public Account.Builder UUID(String UUID) {
+            this.account.setUUID(UUID);
             return this;
         }
 
 
-        public Account.Builder name(String name){
-//            this.account.setName(name);
-            this.name = name;
+        public Account.Builder name(String name) {
+            this.account.setName(name);
             return this;
         }
 
-        public Account.Builder balance(Double balance){
-//            this.account.setBalance(balance);
-            this.balance = balance;
+        public Account.Builder balance(Double balance) {
+            this.account.setBalance(balance);
             return this;
         }
 
         public Account build() {
-//            Account account = new Account(this.account.getUUID(), this.account.getName(), this.account.getBalance());
-            Account account = new Account(this.UUID, this.name, this.balance);
-            account.validateProperties(account);
-            return account;
+            return new Account(this.account.getName(), this.account.getBalance());
         }
-
-
     }
 
 }

@@ -1,11 +1,13 @@
 package br.com.ricas.util;
 
 import br.com.ricas.exceptions.FieldException;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
 
 @Slf4j
+@Data
 public abstract class BaseModel<T> {
 
     public void validateProperties(T clazz) {
@@ -33,10 +35,9 @@ public abstract class BaseModel<T> {
         });
     }
 
-    public static void main(String[] args) {
-        String s = "br.com.ricas.model.Account";
-        String substring = s.substring(s.lastIndexOf(".") + 1);
-        substring+="."+"teste";
-        System.out.println(substring);
+    private String UUID;
+
+    public boolean hasUUID() {
+        return UUID != null && !UUID.isEmpty();
     }
 }

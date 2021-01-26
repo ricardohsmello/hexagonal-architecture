@@ -36,18 +36,15 @@ import java.util.UUID;
         log.info("Initializing account findOrCreate");
         account.validateProperties(account);
 
-        if (isUUIDpresent(account)) {
+        if (account.hasUUID()) {
             Account accountFind = accountRepository.findById(UUID.fromString(account.getUUID())).map(AccountMapper::toAccount).orElse(null);
 
             if (accountFind != null) {
                 return accountFind;
             }
         }
-        return createAccount(account);
-    }
-
-    private boolean isUUIDpresent(Account account) {
-        return account.getUUID() != null && !String.valueOf(account.getUUID()).isEmpty();
+        return account;
+//        return createAccount(account);
     }
 
     private Account createAccount(Account account) {

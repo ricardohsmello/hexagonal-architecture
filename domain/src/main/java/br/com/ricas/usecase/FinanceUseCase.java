@@ -23,10 +23,19 @@ public class FinanceUseCase {
         return financePort.save(finance);
     }
 
-    private void prepareFinanceDependency(Finance finance) {
+    private void prepareFinanceDependency(Finance finance) throws FieldException {
+        validateDependencies(finance);
 
         finance.setCategory(categoryPort.findOrCreate(finance.getCategory()));
         finance.setAccount(accountPort.findOrCreate(finance.getAccount()));
+    }
+
+    private void validateDependencies(Finance finance) {
+        if (finance.getCategory() == null)
+            throw new FieldException("Property Category can't be null");
+
+        if (finance.getAccount() == null)
+            throw new FieldException("Property Account can't be null");
     }
 
     public Optional<List<Finance>> findAll() {

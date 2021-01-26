@@ -4,13 +4,13 @@ import br.com.ricas.exceptions.FieldException;
 import br.com.ricas.util.BaseModel;
 import lombok.*;
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder(toBuilder = true)
 @ToString
 public class Category extends BaseModel<Category> {
-    private String UUID;
+
     private String name;
     private Integer type;
 
@@ -29,7 +29,7 @@ public class Category extends BaseModel<Category> {
         public Builder type(Integer type) {
             if (type==null) return this;
 
-             if (type >=0 && type <=1) {
+            if (type >=0 && type <=1) {
                 this.category.setType(type);
                 return this;
             }
@@ -38,12 +38,9 @@ public class Category extends BaseModel<Category> {
         }
 
         public Category build() {
-            Category category = new Category(this.category.getUUID(),
+            return new Category(
                     this.category.getName(),
                     this.category.getType());
-
-            category.validateProperties(category);
-            return category;
         }
     }
 }

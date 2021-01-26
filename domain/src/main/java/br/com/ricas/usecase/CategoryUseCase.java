@@ -13,10 +13,6 @@ public class CategoryUseCase {
 
     private final CategoryPort categoryPort;
 
-    public Optional<Category> findByName(String name) {
-        return categoryPort.findByName(name);
-    }
-
     public Optional<List<Category>> findAll() {
         return categoryPort.findAll();
     }

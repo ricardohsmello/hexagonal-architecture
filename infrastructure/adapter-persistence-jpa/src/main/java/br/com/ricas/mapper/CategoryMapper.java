@@ -1,8 +1,6 @@
 package br.com.ricas.mapper;
 
-import br.com.ricas.entity.AccountEntity;
 import br.com.ricas.entity.CategoryEntity;
-import br.com.ricas.model.Account;
 import br.com.ricas.model.Category;
 import lombok.experimental.UtilityClass;
 
@@ -25,7 +23,6 @@ public class CategoryMapper {
             build.setUUID(UUID.fromString(category.getUUID()));
 
         return build;
-
     }
 
     public Category toCategory(CategoryEntity categoryEntity) {
@@ -41,11 +38,7 @@ public class CategoryMapper {
 
     public List<Category> toListCategory(final List<CategoryEntity> list) {
         List<Category> listCategory = new ArrayList<>();
-
-        list.forEach(categoryEntity -> {
-            listCategory.add(toCategory(categoryEntity));
-        });
-
+        list.forEach(categoryEntity -> listCategory.add(toCategory(categoryEntity)));
         return listCategory;
     }
 

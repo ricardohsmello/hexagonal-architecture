@@ -66,8 +66,9 @@ class FinanceRepositoryImplTest {
                 .category(category)
                 .value(99.9)
                 .description("Fatura da internet")
-                .UUID(UUID.randomUUID().toString())
                 .build();
+
+        finance.setUUID(UUID.randomUUID().toString());
         return finance;
     }
 }

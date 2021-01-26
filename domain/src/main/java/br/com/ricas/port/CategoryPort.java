@@ -10,7 +10,6 @@ public interface CategoryPort {
     Optional<Category> save(Category category);
     Category findOrCreate(Category category);
     Optional<List<Category>> findAll();
-    Optional<Category> findByName(String name);
 
 }
 

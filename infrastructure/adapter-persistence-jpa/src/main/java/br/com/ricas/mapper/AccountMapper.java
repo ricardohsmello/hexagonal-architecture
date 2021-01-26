@@ -14,23 +14,28 @@ import java.util.UUID;
 public class AccountMapper {
 
     public AccountEntity toAccountEntity(Account account) {
+        account.validateProperties(account);
+
         AccountEntity build = AccountEntity.builder()
                 .name(account.getName())
                 .balance(account.getBalance())
                 .build();
 
-        if (account.getUUID() != null)
+        if (account.getUUID() !=null)
             build.setUUID(UUID.fromString(account.getUUID()));
 
         return build;
     }
 
     public Account toAccount(AccountEntity accountEntity) {
-        return new Account.Builder()
-                .UUID(String.valueOf(accountEntity.getUUID()))
+        Account build = new Account.Builder()
                 .name(accountEntity.getName())
                 .balance(accountEntity.getBalance())
                 .build();
+
+        build.setUUID(String.valueOf(accountEntity.getUUID()));
+
+        return build;
     }
 
     public List<Account> toListAccount(final List<AccountEntity> list) {
@@ -43,13 +48,4 @@ public class AccountMapper {
         return listAccount;
     }
 
-    public List<AccountEntity> toListFinanceEntity(final List<Account> list) {
-        List<AccountEntity> listAccount = new ArrayList<>();
-
-        list.forEach(account -> {
-            listAccount.add(toAccountEntity(account));
-        });
-
-        return listAccount;
-    }
 }
